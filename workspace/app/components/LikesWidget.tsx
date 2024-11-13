@@ -12,7 +12,7 @@ export function LikesWidget({ recipe }: LikesWidgetProps) {
   //  -> Function als action verwenden
 
   return (
-    <form>
+    <form className={"inline-flex"}>
       <button
         className={twMerge(
           "me-2 inline-block rounded border border-orange_2 bg-white p-2 text-[15px] text-orange_2 hover:cursor-pointer hover:bg-orange_2 hover:text-white",

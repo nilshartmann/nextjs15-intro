@@ -40,7 +40,6 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
           </div>
         </div>
         <div className={"mt-4 space-y-2"}>
-          <LikesWidget recipe={recipe} />
           <RecipeCategories recipe={recipe} />
         </div>
       </div>

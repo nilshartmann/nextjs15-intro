@@ -1,14 +1,14 @@
 "use server";
 
-// Das ist Code, der auf dem SERVER (!) ausgeführt wird!
+// This is code, that runs on the SERVER!
 //
 
-// das ist unsere "Datenbank":
+// this is our "database":
 const dbWithUserPreferences = {
   defaultServings: 4,
 };
 
-export async function getDefaultServings() {
+export async function getDefaultServings(): number {
   console.log("GetDefaultServings", dbWithUserPreferences.defaultServings);
 
   // todo: servings aus "Datenbank" lesen

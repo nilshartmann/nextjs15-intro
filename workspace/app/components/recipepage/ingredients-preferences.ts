@@ -8,14 +8,16 @@ const dbWithUserPreferences = {
   defaultServings: 4,
 };
 
-export async function getDefaultServings(): number {
-  console.log("GetDefaultServings", dbWithUserPreferences.defaultServings);
-
-  // todo: servings aus "Datenbank" lesen
-}
-
 export async function saveDefaultServings(newServings: number) {
   console.log("saveDefaultServings", newServings);
 
   // todo: servings "speichern"
+}
+
+// NOTE THAT THIS IS AN ENDPOINT TOO,
+// beacuse it's in a "use server" module
+export async function getDefaultServings(): Promise<number> {
+  console.log("GetDefaultServings", dbWithUserPreferences.defaultServings);
+
+  return dbWithUserPreferences.defaultServings;
 }

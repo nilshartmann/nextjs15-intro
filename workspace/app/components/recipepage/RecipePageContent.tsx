@@ -8,6 +8,7 @@ import IngredientsSection from "@/app/components/recipepage/IngredientsSection.t
 import FeedbackList from "@/app/components/recipepage/FeedbackList.tsx";
 import { Suspense } from "react";
 import LoadingIndicator from "@/app/components/LoadingIndicator.tsx";
+import { getDefaultServings } from "@/app/components/recipepage/ingredients-preferences.ts";
 
 type RecipePageContentProps = {
   recipe: DetailedRecipeDto;
@@ -18,6 +19,8 @@ export default async function RecipePageContent({
   recipe,
   feedbackPromise,
 }: RecipePageContentProps) {
+  // todo: load from the "database": getDefaultServings();
+
   const defaultServings = 4;
   return (
     <div>

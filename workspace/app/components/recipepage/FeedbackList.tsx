@@ -7,7 +7,14 @@ type FeedbackListProps = {
   recipeId: string;
   feedbackPromise?: Promise<GetRecipeFeedbacksResponse>;
 };
-export default async function FeedbackList({ recipeId }: FeedbackListProps) {
+
+export default async function FeedbackList({
+  recipeId,
+  feedbackPromise,
+}: FeedbackListProps) {
+  // note that in real life you would EITHER use Promise OR id
+  // todo: const data = await feedbackPromise;
+
   const data = await fetchFeedback(recipeId);
 
   return (

@@ -1,19 +1,22 @@
 import { RecipeBanner } from "./RecipeBanner.tsx";
 import { CookingTime } from "./CookingTime.tsx";
 import { Instructions } from "./Instructions.tsx";
-import { DetailedRecipeDto } from "../api-types.ts";
+import { DetailedRecipeDto, GetRecipeFeedbacksResponse } from "../api-types.ts";
 import { Sidebar } from "@/app/components/Sidebar.tsx";
 import { H2 } from "@/app/components/Heading.tsx";
 import IngredientsSection from "@/app/components/recipepage/IngredientsSection.tsx";
-import FeedbackListLoader from "@/app/components/recipepage/FeedbackListLoader.tsx";
 import FeedbackList from "@/app/components/recipepage/FeedbackList.tsx";
+import { Suspense } from "react";
+import LoadingIndicator from "@/app/components/LoadingIndicator.tsx";
 
 type RecipePageContentProps = {
   recipe: DetailedRecipeDto;
+  feedbackPromise?: Promise<GetRecipeFeedbacksResponse>;
 };
 
 export default async function RecipePageContent({
   recipe,
+  feedbackPromise,
 }: RecipePageContentProps) {
   const defaultServings = 4;
   return (
@@ -44,6 +47,7 @@ export default async function RecipePageContent({
               - Verzögern des Ladens in 'demo_config'
               - In FeedbackList Laden der Daten zeigen
               - Suspense
+              - Use <FeedbackList recipeId={recipe.id} feedbackPromise={feedbackPromise} />
             */}
 
             <FeedbackList recipeId={recipe.id} />

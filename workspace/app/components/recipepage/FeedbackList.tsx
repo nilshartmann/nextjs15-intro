@@ -1,14 +1,18 @@
 import { formatDate } from "../format-date.ts";
 import { RatingStars } from "../RatingStars.tsx";
-import { Feedback } from "../api-types.ts";
+import { Feedback, GetRecipeFeedbacksResponse } from "../api-types.ts";
+import { fetchFeedback } from "@/app/components/queries.ts";
 
 type FeedbackListProps = {
-  feedbacks: Feedback[];
+  recipeId: string;
+  feedbackPromise?: Promise<GetRecipeFeedbacksResponse>;
 };
-export default function FeedbackList({ feedbacks }: FeedbackListProps) {
+export default async function FeedbackList({ recipeId }: FeedbackListProps) {
+  const data = await fetchFeedback(recipeId);
+
   return (
     <>
-      {feedbacks.map((f) => {
+      {data.feedbacks.map((f) => {
         return (
           <div
             key={f.id}

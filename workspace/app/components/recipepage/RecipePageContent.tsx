@@ -6,6 +6,7 @@ import { Sidebar } from "@/app/components/Sidebar.tsx";
 import { H2 } from "@/app/components/Heading.tsx";
 import IngredientsSection from "@/app/components/recipepage/IngredientsSection.tsx";
 import FeedbackListLoader from "@/app/components/recipepage/FeedbackListLoader.tsx";
+import FeedbackList from "@/app/components/recipepage/FeedbackList.tsx";
 
 type RecipePageContentProps = {
   recipe: DetailedRecipeDto;
@@ -41,11 +42,11 @@ export default async function RecipePageContent({
             {/*
             - todo:
               - Verzögern des Ladens in 'demo_config'
-              - In FeedbackListLoader Laden der Daten zeigen
+              - In FeedbackList Laden der Daten zeigen
               - Suspense
             */}
 
-            <FeedbackListLoader recipeId={recipe.id} />
+            <FeedbackList recipeId={recipe.id} />
             <H2>Feedback</H2>
           </Sidebar>
         </div>

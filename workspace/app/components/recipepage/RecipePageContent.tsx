@@ -9,6 +9,7 @@ import FeedbackList from "@/app/components/recipepage/FeedbackList.tsx";
 import { Suspense } from "react";
 import LoadingIndicator from "@/app/components/LoadingIndicator.tsx";
 import { getDefaultServings } from "@/app/components/recipepage/ingredients-preferences.ts";
+import ConfigurableIngredientsSection from "@/app/components/recipepage/ConfigurableIngredientsSection.tsx";
 
 type RecipePageContentProps = {
   recipe: DetailedRecipeDto;
@@ -21,7 +22,7 @@ export default async function RecipePageContent({
 }: RecipePageContentProps) {
   // todo: load from the "database": getDefaultServings();
 
-  const defaultServings = 4;
+  const defaultServings = await getDefaultServings();
   return (
     <div>
       <RecipeBanner recipe={recipe} />
@@ -37,7 +38,7 @@ export default async function RecipePageContent({
           //  - oben: defaultServings aus "Datenbank" laden
 
           */}
-          <IngredientsSection
+          <ConfigurableIngredientsSection
             ingredients={recipe.ingredients}
             defaultServings={defaultServings}
           />
@@ -53,7 +54,9 @@ export default async function RecipePageContent({
               - Use <FeedbackList recipeId={recipe.id} feedbackPromise={feedbackPromise} />
             */}
 
-            <FeedbackList recipeId={recipe.id} />
+            <Suspense fallback={<LoadingIndicator />}>
+              <FeedbackList recipeId={recipe.id} />
+            </Suspense>
             <H2>Feedback</H2>
           </Sidebar>
         </div>

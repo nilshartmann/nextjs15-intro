@@ -11,6 +11,8 @@ const dbWithUserPreferences = {
 export async function saveDefaultServings(newServings: number) {
   console.log("saveDefaultServings", newServings);
 
+  dbWithUserPreferences.defaultServings = newServings;
+
   // todo: servings "speichern"
 }
 
